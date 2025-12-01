@@ -1,5 +1,9 @@
 <main class="flex flex-col">
   <div class="flex gap-2 p-7 justify-center">
+    <button (click)="toggleDarkMode()">
+      <span class="dark:hidden cursor-pointer text-slate-700"><app-icon-moon></app-icon-moon></span>
+      <span class="hidden dark:inline cursor-pointer text-slate-200"><app-icon-sun></app-icon-sun></span>
+    </button>
     <app-search-movies (searchEmitter)="searchQuery.set($event)"></app-search-movies>
   </div>
   <app-movie-list [query]='searchQuery()'></app-movie-list>
