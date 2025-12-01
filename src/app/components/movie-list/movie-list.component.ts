@@ -2,10 +2,13 @@ import { Component, computed, inject, input, signal } from '@angular/core';
 import { MovieService } from '../../services/movie.service';
 import { IMovie } from '../../models/movie.model';
 import { MovieCardComponent } from '../movie-card/movie-card.component';
+import {
+  MovieCardSkeletonComponent
+} from '../../shared/ui/skeletons/movie-card-skeleton/movie-card-skeleton.component';
 
 @Component({
   selector: 'app-movie-list',
-  imports: [MovieCardComponent],
+  imports: [MovieCardComponent, MovieCardSkeletonComponent],
   templateUrl: './movie-list.component.html',
   standalone: true,
 })

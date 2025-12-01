@@ -7,6 +7,7 @@ import { IconClockComponent } from '../../shared/ui/icons/icon-clock/icon-clock.
 import { Location } from '@angular/common';
 import { IconBackComponent } from '../../shared/ui/icons/icon-back/icon-back.component';
 import { ConvertTimePipe } from '../../shared/pipes/convert-time.pipe';
+import { MovieDetailSkeletonComponent } from '../../shared/ui/skeletons/movie-detail-skeleton/movie-detail-skeleton.component';
 import { ConvertRatingPipe } from '../../shared/pipes/convert-rating.pipe';
 
 @Component({
@@ -18,6 +19,7 @@ import { ConvertRatingPipe } from '../../shared/pipes/convert-rating.pipe';
     IconClockComponent,
     IconBackComponent,
     ConvertTimePipe,
+    MovieDetailSkeletonComponent,
     ConvertRatingPipe,
   ],
   templateUrl: './movie-detail.component.html',
