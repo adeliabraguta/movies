@@ -1,0 +1,16 @@
+<section class="relative flex flex-col justify-center items-center w-[200px]">
+  <div class="absolute top-2 right-2 z-2 flex items-center gap-2 pb-1">
+    <span class="inline-flex items-center gap-1 rounded-full bg-emerald-100 px-2 py-1
+          text-xs font-semibold text-emerald-600">
+      <app-icon-star></app-icon-star>
+      <span>{{ movie()?.vote_average | convertRating }}</span>
+    </span>
+  </div>
+  <figure class="relative w-[200px] aspect-[2/3] rounded-md overflow-hidden">
+    <a [routerLink]="['/']">
+      <img [ngSrc]="posterSrc()" [alt]="movie()?.title" fill class="object-cover rounded-md" />
+    </a>
+  </figure>
+  <a [routerLink]="['/']"><h4 class="font-medium tracking-wider text-lg pt-1">{{ movie()?.title }}</h4></a>
+  <p class="line-clamp-2 text-center">{{ movie()?.overview }}</p>
+</section>
