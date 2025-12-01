@@ -1,27 +1,22 @@
-import { Component, effect, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { SearchMoviesComponent } from '../../components/search-movies/search-movies.component';
 import { MovieListComponent } from '../../components/movie-list/movie-list.component';
 import { IconMoonComponent } from '../../shared/ui/icons/icon-moon/icon-moon.component';
 import { IconSunComponent } from '../../shared/ui/icons/icon-sun/icon-sun.component';
+import { ThemeService } from '../../services/theme.service';
 
 @Component({
   selector: 'app-movies-page',
   imports: [SearchMoviesComponent, MovieListComponent, IconMoonComponent, IconSunComponent],
   templateUrl: './movies-page.component.html',
-  standalone: true,
+  standalone: true
 })
 export class MoviesPageComponent {
-  searchQuery = signal<string>('');
-  darkMode = signal(false);
+  private themeService = inject(ThemeService);
 
-  constructor() {
-    effect(() => {
-      const isDark = this.darkMode();
-      document.documentElement.classList.toggle('dark', isDark);
-    });
-  }
+  searchQuery = signal<string>('');
 
   toggleDarkMode() {
-    this.darkMode.update((dark) => !dark);
+    this.themeService.toggleDarkMode();
   }
 }
