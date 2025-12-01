@@ -1,3 +1,6 @@
 <main class="flex flex-col">
-  <app-movie-list></app-movie-list>
+  <div class="flex gap-2 p-7 justify-center">
+    <app-search-movies (searchEmitter)="searchQuery.set($event)"></app-search-movies>
+  </div>
+  <app-movie-list [query]='searchQuery()'></app-movie-list>
 </main>
