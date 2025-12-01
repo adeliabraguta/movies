@@ -7,10 +7,12 @@
     </span>
   </div>
   <figure class="relative w-[200px] aspect-[2/3] rounded-md overflow-hidden">
-    <a [routerLink]="['/']">
+    <a [routerLink]="['/movies', movie()?.id]">
       <img [ngSrc]="posterSrc()" [alt]="movie()?.title" fill class="object-cover rounded-md" />
     </a>
   </figure>
-  <a [routerLink]="['/']"><h4 class="font-medium tracking-wider text-lg pt-1">{{ movie()?.title }}</h4></a>
+  <a
+    [routerLink]="['/movies', movie()?.id]"><h4
+    class="font-medium tracking-wider text-lg pt-1">{{ movie()?.title }}</h4></a>
   <p class="line-clamp-2 text-center">{{ movie()?.overview }}</p>
 </section>
