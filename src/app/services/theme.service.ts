@@ -1,13 +1,14 @@
 import { effect, Injectable, signal } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ThemeService {
   darkMode = signal(false);
 
   constructor() {
-    const isDark = localStorage['theme'] === 'dark' ||
+    const isDark =
+      localStorage['theme'] === 'dark' ||
       (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
 
     if (isDark) {
@@ -22,6 +23,6 @@ export class ThemeService {
   }
 
   toggleDarkMode() {
-    this.darkMode.update(dark => !dark);
+    this.darkMode.update((dark) => !dark);
   }
 }

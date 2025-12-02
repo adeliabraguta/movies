@@ -9,10 +9,10 @@ import { ThemeService } from '../../services/theme.service';
   selector: 'app-movies-page',
   imports: [SearchMoviesComponent, MovieListComponent, IconMoonComponent, IconSunComponent],
   templateUrl: './movies-page.component.html',
-  standalone: true
+  standalone: true,
 })
 export class MoviesPageComponent {
-  private themeService = inject(ThemeService);
+  private readonly themeService = inject(ThemeService);
 
   searchQuery = signal<string>('');
 

@@ -16,6 +16,7 @@ export class SearchMoviesComponent {
       this.searchEmitter.emit(this.query());
     });
   }
+
   onSearch() {
     this.searchEmitter.emit(this.query());
   }
