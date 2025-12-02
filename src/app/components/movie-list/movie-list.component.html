@@ -1,25 +1,25 @@
-@if (isLoading()) {
+@if (isLoading() && movies().length === 0) {
   <main class="p-3 pt-0">
     <ul class="grid gap-x-4 gap-y-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-      @if (isLoading()) {
-        @for (_ of [1, 2, 3, 4, 5]; track $index) {
-          <app-movie-card-skeleton></app-movie-card-skeleton>
-        }
+      @for (_ of [1, 2, 3, 4, 5, 6, 7, 8]; track $index) {
+        <app-movie-card-skeleton></app-movie-card-skeleton>
       }
     </ul>
   </main>
-} @else if (isError()) {
+} @else if (isError() && movies().length === 0) {
   <main class="min-h-screen flex justify-center items-center">
     <p>Something went wrong :(</p>
   </main>
 } @else {
-  <main class="p-3 pt-0">
+  <main class="p-3 pt-0" #scrollContainer >
     <ul class="grid gap-x-4 gap-y-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-      @for (movie of movies(); track movie.id) {
-        <ol>
-          <app-movie-card class="flex flex-col justify-center items-center" [movie]="movie"></app-movie-card>
-        </ol>
+      @for (movie of movies(); track movie.id; let first=$first) {
+        <li>
+          <app-movie-card class="flex flex-col justify-center items-center" [movie]="movie"
+                          [priorityImg]="first"></app-movie-card>
+        </li>
       }
     </ul>
   </main>
 }
+<div #scrollAnchor class="scroll-anchor h-10"></div>

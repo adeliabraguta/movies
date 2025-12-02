@@ -19,7 +19,7 @@ export class MovieService {
     });
   }
 
-  searchMovies(query: Signal<string>) {
+  searchMovies(page: Signal<number>, query: Signal<string>) {
     return httpResource<IMoviesList>(() => {
       if (!query()) {
         return;
@@ -27,7 +27,7 @@ export class MovieService {
       return {
         method: 'GET',
         url: `${this.resourceUrl}/search/movie`,
-        params: { query: query() },
+        params: { page: page().toString(), query: query() },
       };
     });
   }
