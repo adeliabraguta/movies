@@ -9,6 +9,7 @@ import { IconBackComponent } from '../../shared/ui/icons/icon-back/icon-back.com
 import { ConvertTimePipe } from '../../shared/pipes/convert-time.pipe';
 import { MovieDetailSkeletonComponent } from '../../shared/ui/skeletons/movie-detail-skeleton/movie-detail-skeleton.component';
 import { ConvertRatingPipe } from '../../shared/pipes/convert-rating.pipe';
+import { TransformImgPathPipe } from '../../shared/pipes/transform-img-path.pipe';
 
 @Component({
   selector: 'app-movie-detail',
@@ -21,23 +22,18 @@ import { ConvertRatingPipe } from '../../shared/pipes/convert-rating.pipe';
     ConvertTimePipe,
     MovieDetailSkeletonComponent,
     ConvertRatingPipe,
+    TransformImgPathPipe,
   ],
   templateUrl: './movie-detail.component.html',
   standalone: true,
 })
 export class MovieDetailComponent {
-  private route = inject(ActivatedRoute);
-  private location = inject(Location);
+  private readonly route = inject(ActivatedRoute);
+  private readonly location = inject(Location);
 
   movie = computed(() => this.route.snapshot.data['movie'].value() ?? ({} as IMovie));
   isLoading = computed(() => this.route.snapshot.data['movie'].isLoading());
   isError = computed(() => this.route.snapshot.data['movie'].error());
-
-  posterSrc = computed(() =>
-    this.movie()?.poster_path
-      ? 'https://image.tmdb.org/t/p/original/' + this.movie()?.poster_path
-      : 'assets/not-found.jpg',
-  );
 
   goBack() {
     this.location.back();

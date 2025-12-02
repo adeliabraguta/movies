@@ -8,7 +8,7 @@
   <main
     class="min-h-screen p-5 grid grid-cols-1 md:grid-cols-[1fr_2fr] place-items-center gap-4 justify-center items-center">
     <figure class="relative w-[200px] md:w-[350px] aspect-[2/3] rounded-md overflow-hidden">
-      <img priority [ngSrc]="posterSrc()" [alt]="movie()?.title" fill class="object-cover rounded-md" />
+      <img priority [ngSrc]="movie()?.poster_path | transformImgPath" [alt]="movie()?.title" fill class="object-cover rounded-md" />
     </figure>
     <article class="flex flex-col gap-3">
       <header class="flex flex-wrap items-center gap-3 items-end">

@@ -8,7 +8,8 @@
   </div>
   <figure class="relative w-[200px] aspect-[2/3] rounded-md overflow-hidden">
     <a [routerLink]="['/movies', movie()?.id]">
-      <img [ngSrc]="posterSrc()" [alt]="movie()?.title" fill class="object-cover rounded-md" />
+      <img [ngSrc]="movie()?.poster_path | transformImgPath" [alt]="movie()?.title" [priority]="priorityImg()" fill
+           class="object-cover rounded-md" />
     </a>
   </figure>
   <a
