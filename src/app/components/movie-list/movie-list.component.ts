@@ -32,8 +32,6 @@ export class MovieListComponent implements AfterViewInit {
   private searchPage = signal(1);
 
   private pageSize = 20;
-  private previousScrollTop = 0;
-  private shouldRestoreScroll = false;
 
   private readonly moviesResource = this.movieService.getMovies(this.listPage);
   private readonly searchMoviesResource = this.movieService.searchMovies(
@@ -77,9 +75,6 @@ export class MovieListComponent implements AfterViewInit {
   });
 
   loadMore() {
-    this.previousScrollTop = window.scrollY || document.documentElement.scrollTop;
-    this.shouldRestoreScroll = true;
-
     const q = this.query().trim();
 
     if (q) {
@@ -108,20 +103,6 @@ export class MovieListComponent implements AfterViewInit {
         this.searchPage.set(1);
       } else {
         this.listPage.set(1);
-      }
-    });
-
-    effect(() => {
-      this.movies();
-
-      if (this.shouldRestoreScroll) {
-        queueMicrotask(() => {
-          window.scrollTo({
-            top: this.previousScrollTop,
-            behavior: 'instant',
-          });
-          this.shouldRestoreScroll = false;
-        });
       }
     });
   }
