@@ -1,0 +1,16 @@
+<main class="flex flex-col">
+  <div class="flex gap-2 p-7 justify-center">
+    <button (click)="toggleDarkMode()">
+      <span class="dark:hidden cursor-pointer text-slate-700">
+        <svg class="w-9 h-9">
+          <use href="/movies/icons/moon.svg#icon"></use>
+        </svg>
+      </span>
+      <svg class="hidden dark:inline cursor-pointer text-slate-200 w-7 h-7">
+        <use href="/movies/icons/sun.svg#icon"></use>
+      </svg>
+    </button>
+    <app-search-movies (searchEmitter)="searchQuery.set($event)"></app-search-movies>
+  </div>
+  <app-movie-list [query]="searchQuery()"></app-movie-list>
+</main>

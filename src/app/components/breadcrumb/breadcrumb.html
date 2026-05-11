@@ -1,0 +1,14 @@
+<nav aria-label="Breadcrumb">
+  <ol class="flex items-center gap-2 text-sm">
+    @for (crumb of crumbs(); track crumb.url; let last = $last) {
+      <li class="flex items-center gap-2">
+        @if (last) {
+          <span aria-current="page" class="font-medium">{{ crumb.label }}</span>
+        } @else {
+          <a [routerLink]="crumb.url" class="hover:underline">{{ crumb.label }}</a>
+          <span aria-hidden="true">&rsaquo;</span>
+        }
+      </li>
+    }
+  </ol>
+</nav>
